@@ -25,6 +25,10 @@
             <div class="form-group mt-4">
                 <input type="submit" value="Login" class="btn btn-primary btn-block w-100" name="submit">
             </div>
+            <div class="form-group mt-3">
+                <div class="text-muted text-center mb-2">Dont' have an account?</div>
+                <a href="{{ route('user.create') }}" class="btn btn-dark btn-block w-100">Register</a>
+            </div>
             
 
         </form>

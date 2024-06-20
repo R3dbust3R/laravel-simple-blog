@@ -58,6 +58,11 @@
             <div class="form-group mt-4">
                 <input type="submit" value="Register" class="btn btn-primary btn-block w-100" name="submit">
             </div>
+
+            <div class="form-group mt-3">
+                <div class="text-muted text-center mb-2">Already have an account?</div>
+                <a href="{{ route('user.login') }}" class="btn btn-dark btn-block w-100">Login</a>
+            </div>
             
 
         </form>
