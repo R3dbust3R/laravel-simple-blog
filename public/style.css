@@ -1,0 +1,13 @@
+/* show user page */
+.profile .header .banner {
+    height: 400px;
+    background-image: url('storage/images/banner.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+.profile .header .profile-img {
+    width: 160px;
+    margin-top: -80px;
+}
+/* show user page */
