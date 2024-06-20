@@ -15,6 +15,7 @@
                 method="POST" 
                 enctype="multipart/form-data"
                 class="w-75 m-auto">
+                
                 @csrf
                 @method('PUT')
 

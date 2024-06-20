@@ -47,6 +47,14 @@
                 @enderror
             </div>
 
+            <div class="form-group mb-3">
+                <label class="mb-2" for="banner">Profile banner</label>
+                <input type="file" id="banner" class="form-control" name="banner">
+                @error('banner')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
             <div class="form-group mt-4">
                 <input type="submit" value="Register" class="btn btn-primary btn-block w-100" name="submit">
             </div>

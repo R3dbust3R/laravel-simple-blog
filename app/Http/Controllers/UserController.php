@@ -35,15 +35,21 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'min:3', 'max:150'],
             'image' => ['nullable', 'file', 'mimes:jpg,jpeg,png,avif,webp', 'max:5120'],
+            'banner' => ['nullable', 'file', 'mimes:jpg,jpeg,png,avif,webp', 'max:5120'],
             'email' => ['required', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:5', 'max:120', 'confirmed'],
         ]);
 
-        // handling the profile image
-        $image = null;
+        // handling the profile and banner images
+        $image  = null;
+        $banner = null;
 
         if ($request->hasFile('image')) {
             $image = $request->file('image')->store('images', 'public');
+        }
+
+        if ($request->hasFile('banner')) {
+            $banner = $request->file('banner')->store('images', 'public');
         }
 
         // Create a new user instance and fill it with validated data
@@ -52,6 +58,7 @@ class UserController extends Controller
             'email' => $validated['email'],
             'password' => bcrypt($validated['password']),
             'image' => $image,
+            'banner' => $banner,
         ]);
 
         if ($user->save()) {
@@ -143,6 +150,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'min:3', 'max:150'],
             'image' => ['nullable', 'file', 'mimes:jpg,jpeg,png,avif,webp', 'max:5120'],
+            'banner' => ['nullable', 'file', 'mimes:jpg,jpeg,png,avif,webp', 'max:5120'],
             'email' => ['required', 'email', 'max:255', 'unique:users,email,' . $user->id],
             'password' => ['nullable', 'string', 'min:5', 'max:120', 'confirmed'],
         ]);
@@ -157,6 +165,18 @@ class UserController extends Controller
             // Store the new image and get its path
             $image = $request->file('image')->store('images', 'public');
             $validated['image'] = $image;
+        }
+        
+        // Handle the banner
+        if ($request->hasFile('banner')) {
+            // If there's an existing banner, delete it
+            if ($user->banner) {
+                Storage::disk('public')->delete($user->banner);
+            }
+
+            // Store the new banner and get its path
+            $banner = $request->file('banner')->store('images', 'public');
+            $validated['banner'] = $banner;
         }
 
         // Handle the password

@@ -4,7 +4,10 @@
     <div class="container">
         <div class="profile bg-light border border-2 rounded text-center">
             <div class="header">
-                <div class="banner"></div>
+                <div 
+                    class="banner" 
+                    style="background-image: url({{ asset('storage/' . ($user->banner ?? 'images/banner.jpg')) }})">
+                </div>
                 <img 
                     src="{{ asset('storage/' . ($user->image ?? 'images/default.jpg')) }}" 
                     alt="{{ $user->name }}" 

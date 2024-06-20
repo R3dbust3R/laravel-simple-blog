@@ -47,6 +47,20 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
+                
+                <div class="form-group mb-3">
+                    <label class="mb-2" for="banner">Profile banner</label>
+                    <input type="file" id="banner" class="form-control" name="banner">
+                    <div class="w-25 mt-2">
+                        <img 
+                            src="{{ asset('storage/' . ($user->banner ?? 'images/banner.jpg')) }}" 
+                            alt="" 
+                            class="w-100 rounded-3 current-banner">
+                    </div>
+                    @error('banner')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
 
                 <div class="form-group mt-4">
                     <input type="submit" value="Update" class="btn btn-primary btn-block w-100" name="submit">
