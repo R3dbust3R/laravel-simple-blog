@@ -36,6 +36,8 @@
                             {{Str::words($post->content, 45)}}
                             <a href="{{ route('post.show', $post->id) }}">more</a>
                         </p>
+
+                        {{-- owner actions --}}
                         @if ($post->user_id == Auth::user()->id)
                             <div class="actions text-right">
                                 {{-- <a href="{{ route('post.show', $post->id) }}" class="btn btn-sm btn-primary">Show post</a> --}}
@@ -55,6 +57,7 @@
                                 </form>
                             </div>
                         @endif
+                        {{-- owner actions --}}
                     </div>
 
                 </div>
