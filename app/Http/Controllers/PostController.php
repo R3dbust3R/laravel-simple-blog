@@ -91,8 +91,8 @@ class PostController extends Controller
     {
         // Validate the incoming request
         $validated = $request->validate([
-            'title' => ['required', 'string', 'min:5', 'max:500', 'unique:posts,title'],
-            'content' => ['required', 'min:5', 'max:50000', 'unique:posts,content'],
+            'title' => ['required', 'string', 'min:5', 'max:500'],
+            'content' => ['required', 'min:5', 'max:50000'],
             'image' => ['nullable', 'file', 'mimes:jpg,jpeg,png,avif,webp', 'max:5120'],
         ]);
 

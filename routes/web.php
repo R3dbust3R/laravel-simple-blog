@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SocialController;
 
 
 
@@ -17,3 +18,6 @@ Route::post('/check-login', [UserController::class, 'checkLogin'])->name('user.c
 
 Route::resource('post', PostController::class);
 Route::resource('comment', CommentController::class);
+
+Route::get('/social/edit', [SocialController::class, 'edit'])->name('social.edit');
+Route::post('/social/store', [SocialController::class, 'store'])->name('social.store');

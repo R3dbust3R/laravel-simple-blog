@@ -1,4 +1,4 @@
-<x-layout page="Create">
+<x-layout page="Profile">
 
 
     <div class="container">
@@ -16,11 +16,26 @@
             <div class="body">
                 <h3 class="name"> {{ $user->name }} </h3>
                 <p class="m-0 p-0"> Member since: {{ $user->created_at->DiffForHumans() }} </p>
+                <ul class="social-links list-unstyled mt-3">
+                    
+                    @if ($social)
+                        <li><h5>Social links</h5></li>
+                        @foreach ($socialLinks as $link)
+                            @if ($social->$link) 
+                            <li class="d-inline">
+                                <a href="{{ $social->$link }}" target="_blank" class="btn btn-sm btn-primary rounded-5 px-3">{{ $link }}</a>
+                            </li> 
+                            @endif
+                        @endforeach
+                    @endif
+                    
+                </ul>
             </div>
             <div class="footer pb-5 mt-2">
                 @if ($hasAccess)
                     <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary">Edit Profile</a>
                     <a href="{{ route('post.create') }}" class="btn btn-success">Add New Post</a>
+                    <a href="{{ route('social.edit') }}" class="btn btn-dark">Edit Social Profiles</a>
                     <form
                         onsubmit="return confirm('Are you sure that you want to delete your account?, Remember that you will not recover it later!')" 
                         action="{{route('user.destroy', $user->id)}}" 

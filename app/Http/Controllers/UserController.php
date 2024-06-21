@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Social;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -129,8 +130,20 @@ class UserController extends Controller
             $hasAccess = true;
         }
         $posts = Post::where('user_id', $user->id)->latest()->paginate(4);
+        $social = Social::where('user_id', Auth::id())->first();
+        $socialLinks = [
+            'facebook', 
+            'instagram', 
+            'tiktok', 
+            'linkedin', 
+            'github', 
+            'google', 
+            'youtube', 
+            'website'
+        ];
 
-        return view('user.show', compact('user', 'hasAccess', 'posts'));
+
+        return view('user.show', compact('user', 'hasAccess', 'posts', 'social', 'socialLinks'));
     }
 
     /**

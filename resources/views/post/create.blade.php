@@ -1,7 +1,7 @@
 <x-layout page="Create new post">
 
     <div class="container">
-        <h2 class="text-center">Create a new post</h2>
+        <h2 class="text-center mt-4">Create a new post</h2>
 
         @session('message')
             <div class="alert alert-success">
@@ -26,7 +26,7 @@
 
             <div class="form-group mb-3">
                 <label class="mb-2" for="title">Content</label>
-                <textarea class="form-control" name="content" id="content">{{ old('content') }}</textarea>
+                <textarea class="form-control" name="content" id="content" style="height: 280px">{{ old('content') }}</textarea>
                 @error('content')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror

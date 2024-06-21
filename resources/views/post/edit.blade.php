@@ -15,7 +15,7 @@
                 method="POST" 
                 enctype="multipart/form-data"
                 class="w-75 m-auto">
-                
+
                 @csrf
                 @method('PUT')
 
@@ -29,7 +29,7 @@
 
                 <div class="form-group mb-3">
                     <label class="mb-2" for="title">Content</label>
-                    <textarea class="form-control" name="content" id="content">{{ old('content') ?? $post->content }}</textarea>
+                    <textarea class="form-control" name="content" id="content" style="height: 320px">{{ old('content') ?? $post->content }}</textarea>
                     @error('content')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
