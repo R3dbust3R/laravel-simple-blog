@@ -17,6 +17,11 @@ class PostController extends Controller
      */
     public function index()
     {
+        // redirect to login page if not authenticated 
+        if (! Auth::user()) {
+            return redirect()->route('user.login');
+        }
+
         $posts = Post::with('user')->orderBy('id', 'desc')->paginate(6);
         return view('post.index', compact('posts'));
     }

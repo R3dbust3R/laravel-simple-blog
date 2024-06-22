@@ -9,7 +9,7 @@ use App\Http\Controllers\SocialController;
 
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/', [PostController::class, 'index'])->name('post.index');
 
 Route::resource('user', UserController::class);
 Route::get('/logout', [UserController::class, 'logout'])->name('user.logout');
