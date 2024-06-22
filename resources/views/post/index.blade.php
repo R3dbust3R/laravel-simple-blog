@@ -36,14 +36,37 @@
                             <a href="{{ route('post.show', $post->id) }}">more</a>
                         </p>
 
-                        {{-- comments counter --}}
-                        <div class="text-muted comments-counter mb-3">
-                            {{-- post-comments --}}
-                            <a href="{{ route('post.show', $post->id) }}#post-comments">
-                                {{ $post->comments->count() }} comments
-                            </a>
+                        {{-- comments, likes, shares section --}}
+                        <div class="d-flex justify-content-between">
+                            <div class="for-user mb-2">
+
+                                @foreach ($post->likes as $like)
+                                    @if ($like->user_id == Auth::id())
+                                        @php
+                                            $liked = true; break;    
+                                        @endphp
+                                    @endif
+                                @endforeach
+
+                                <a href="{{ route('post.like', $post->id) }}" class="d-inline-block m-2"><i class="fa-{{ $liked ? 'solid' : 'regular' }} fa-heart fs-5"></i></a>
+                                <a href="{{ route('post.show', $post->id) }}#add-comment" class="d-inline-block m-2"><i class="fa-regular fa-comment fs-5"></i></a>
+                                <a href="#######" class="d-inline-block m-2"><i class="fa-regular fa-share-from-square fs-5"></i></a>
+
+                                @php
+                                    $liked = false;
+                                @endphp
+                            </div>
+
+                            <div class="text-muted comments-counter mb-3 counters">
+                                <a href="{{ route('post.show', $post->id) }}#post-comments" class="badge bg-primary text-light">
+                                    {{ $post->comments->count() }} Comments
+                                </a>
+                                <span class="badge bg-dark">
+                                    {{ $post->likes->count() }} Likes
+                                </span>
+                            </div>
                         </div>
-                        {{-- comments counter --}}
+                        {{-- comments, likes, shares section --}}
 
                         {{-- owner actions --}}
                         @if ($post->user_id == Auth::user()->id)

@@ -22,8 +22,10 @@ class PostController extends Controller
             return redirect()->route('user.login');
         }
 
-        $posts = Post::with(['user', 'comments'])->orderBy('id', 'desc')->paginate(6);
-        return view('post.index', compact('posts'));
+        $posts = Post::with(['user', 'comments', 'likes'])->orderBy('id', 'desc')->paginate(6);
+        $liked = false;
+
+        return view('post.index', compact('posts', 'liked'));
     }
 
     /**

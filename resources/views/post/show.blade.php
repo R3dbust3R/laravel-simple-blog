@@ -145,7 +145,7 @@
                             @endforeach
             
                             <div class="add-comment mt-4">
-                                <h3 class="py-3">Add a new comment</h3>
+                                <h3 id="add-comment" class="py-3">Add a new comment</h3>
                                 <form 
                                     action="{{ route('comment.store') }}"
                                     method="POST"
