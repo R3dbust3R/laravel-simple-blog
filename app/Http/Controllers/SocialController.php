@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Social;
-use Illuminate\Support\Facades\Log;
 use App\SocialInitializer;
 
+// use Illuminate\Support\Facades\Log;
 
 // use App\Models\User;
 

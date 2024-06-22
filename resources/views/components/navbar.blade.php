@@ -6,7 +6,7 @@
                 <a class="text-light" href="{{ route('post.index') }}">Back<span class="text-warning">book</span></a>
             </strong>
         </div>
-        {{-- ---------- --}}
+
         <ul class="list-unstyled d-flex m-0">
             @auth
                 <li><a class="d-block py-4 px-3 text-light" href="{{ route('post.index') }}">Home</a></li>

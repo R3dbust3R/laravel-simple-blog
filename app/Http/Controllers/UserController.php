@@ -111,9 +111,9 @@ class UserController extends Controller
         ]);
 
         
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $request->remember)) {
             $request->session()->regenerate();
-            return redirect()->route('user.index');
+            return redirect()->route('post.index');
         }
 
         return back()->with('email', 'The provided credentials do not match our records!');

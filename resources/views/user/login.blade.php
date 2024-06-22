@@ -21,6 +21,11 @@
                     {{ session('email') }}
                 </div>
             @endsession
+
+            <div class="form-group mb-3">
+                <input type="checkbox" checked id="remember" name="remember">
+                <label class="mb-2 text-muted ps-1" for="remember">Remember me</label>
+            </div>
             
             <div class="form-group mt-4">
                 <input type="submit" value="Login" class="btn btn-primary btn-block w-100" name="submit">
