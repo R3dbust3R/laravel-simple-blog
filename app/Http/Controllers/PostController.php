@@ -27,6 +27,21 @@ class PostController extends Controller
     }
 
     /**
+     * Search for posts
+     */
+    public function search(Request $request) 
+    {
+        $query = $request->input('query');
+        $posts = Post::with(['user', 'comments'])
+                ->where('title', 'like', '%'. $query .'%')
+                ->orWhere('content', 'like', '%'. $query .'%')
+                ->latest()
+                ->paginate(6);
+
+        return view('post.search', compact('posts', 'query'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

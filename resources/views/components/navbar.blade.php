@@ -7,6 +7,18 @@
             </strong>
         </div>
 
+        <div class="nav-search">
+            <form 
+                action="{{ route('post.search') }}"
+                method="GET"
+                class="">
+                <div class="input-group">
+                    <input type="submit" value="Find" class="btn btn-warning px-4">
+                    <input type="text" required placeholder="Search for posts" class="form-control border-warning" name="query">
+                </div>
+            </form>
+        </div>
+
         <ul class="list-unstyled d-flex m-0">
             @auth
                 <li><a class="d-block py-4 px-3 text-light" href="{{ route('post.index') }}">Home</a></li>
