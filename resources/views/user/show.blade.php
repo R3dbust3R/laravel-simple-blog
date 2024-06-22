@@ -78,6 +78,14 @@
                             <p class="lead">
                                 {{ Str::words($post->content, 45) }}
                             </p>
+                            {{-- comments counter --}}
+                            <div class="text-muted comments-counter mb-3">
+                                {{-- post-comments --}}
+                                <a href="{{ route('post.show', $post->id) }}#post-comments">
+                                    {{ $post->comments->count() }} comments
+                                </a>
+                            </div>
+                            {{-- comments counter --}}
                             @if ($hasAccess)
                                 <div class="actions text-right">
                                     <a href="{{ route('post.show', $post->id) }}" class="btn btn-sm btn-primary">Show post</a>

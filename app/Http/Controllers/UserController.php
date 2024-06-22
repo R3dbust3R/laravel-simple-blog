@@ -129,7 +129,7 @@ class UserController extends Controller
         if (Auth()->user()->id == $user->id) {
             $hasAccess = true;
         }
-        $posts = Post::where('user_id', $user->id)->latest()->paginate(4);
+        $posts = Post::with('comments')->where('user_id', $user->id)->latest()->paginate(4);
         $social = Social::where('user_id', Auth::id())->first();
         $socialLinks = [
             'facebook', 

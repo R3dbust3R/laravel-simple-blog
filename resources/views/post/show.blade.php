@@ -3,14 +3,14 @@
 
     <div class="container">
         
-        <div class="post bg-light mt-4 p-5">
-            <h2>{{ $post->title }}</h2>
-            <span class="text-muted">{{$post->created_at->DiffForHumans()}}</span>
-
+        <div class="post bg-light p-5 pt-0">
             <img 
                 src="{{ asset('storage/' . ($post->image ?? 'images/banner.jpg')) }}" 
                 alt="{{ $post->title }}"
-                class="w-100">
+                class="d-block w-100 mb-4">
+
+            <h2>{{ $post->title }}</h2>
+            <span class="text-muted">{{$post->created_at->DiffForHumans()}}</span>
 
             <p class="lead">
                 {{ $post->content }}
@@ -39,7 +39,7 @@
 
 
             {{-- comments section --}}
-            <div class="comments">
+            <div class="comments" id="post-comments">
                 <hr class="my-4">
                 <h3>Comments</h3>
 

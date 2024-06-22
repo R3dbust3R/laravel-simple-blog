@@ -1,6 +1,5 @@
 <x-layout page="Home">
 
-
     <div class="container">
         <h2 class="my-5">Latest Posts</h2>
         @foreach ($posts as $post)
@@ -36,6 +35,15 @@
                             {{Str::words($post->content, 45)}}
                             <a href="{{ route('post.show', $post->id) }}">more</a>
                         </p>
+
+                        {{-- comments counter --}}
+                        <div class="text-muted comments-counter mb-3">
+                            {{-- post-comments --}}
+                            <a href="{{ route('post.show', $post->id) }}#post-comments">
+                                {{ $post->comments->count() }} comments
+                            </a>
+                        </div>
+                        {{-- comments counter --}}
 
                         {{-- owner actions --}}
                         @if ($post->user_id == Auth::user()->id)

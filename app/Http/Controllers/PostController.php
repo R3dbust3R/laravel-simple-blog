@@ -22,7 +22,7 @@ class PostController extends Controller
             return redirect()->route('user.login');
         }
 
-        $posts = Post::with('user')->orderBy('id', 'desc')->paginate(6);
+        $posts = Post::with(['user', 'comments'])->orderBy('id', 'desc')->paginate(6);
         return view('post.index', compact('posts'));
     }
 
