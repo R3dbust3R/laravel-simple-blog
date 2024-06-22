@@ -3,7 +3,7 @@
 
         <div class="logo">
             <strong class="fs-4">
-                <a class="text-light" href="{{ route('post.index') }}">Back<span class="text-warning">book</span></a>
+                <a class="text-light" href="{{ route('post.index') }}">Sou<span class="text-warning">LAN</span></a>
             </strong>
         </div>
 

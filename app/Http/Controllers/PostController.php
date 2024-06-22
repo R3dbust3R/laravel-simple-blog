@@ -93,7 +93,9 @@ class PostController extends Controller
                         ->latest()
                         ->get();
 
-        return view('post.show', compact('post', 'comments'));
+        $latest_posts = Post::latest()->paginate(5);
+
+        return view('post.show', compact('post', 'comments', 'latest_posts'));
     }
 
     /**
